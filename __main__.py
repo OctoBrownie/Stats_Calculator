@@ -95,8 +95,7 @@ List of commands:
 		print("Invalid input list.")
 		return 1
 	
-	functions = {'sort':print_sort, 'mean':mean, 'median':median, 'std deviation':std_deviation, 'mode':mode 
-			}
+	functions = {'sort':print_sort, 'mean':mean, 'median':median, 'std deviation':std_deviation, 'mode':mode}
 	for arg in args:
 		if arg in list(functions.keys()):
 			if arg == 'sort':
@@ -107,6 +106,5 @@ List of commands:
 			print("ERROR: Unknown function.")
 			return 1
 
-if __name__ == "__main__":
-	# mainly testing stuff here
-	stats_calc([42, 34, 6, 45], 'sort', 'mean','median')
+# mainly testing stuff here
+stats_calc([42, 34, 6, 45], 'sort', 'mean','median')

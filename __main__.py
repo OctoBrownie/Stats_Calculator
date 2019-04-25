@@ -8,8 +8,8 @@ List of commands:
 	sort - sorts the list
 	mean - finds the average of all values within the list
 	median - finds the middle value of the list
+	mode - finds the number(s) that occur most in the data
 	std deviation - finds the standard deviation of the list
-Created by Crystal Lee, in hopes of making the stats unit in her math class easier to go through.
 """	
 	def print_sort(input_list):
 		print("Original list:" + str(input_list))

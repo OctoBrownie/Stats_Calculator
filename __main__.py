@@ -105,6 +105,3 @@ List of commands:
 		else:
 			print("ERROR: Unknown function.")
 			return 1
-
-# mainly testing stuff here
-stats_calc([42, 34, 6, 45], 'sort', 'mean','median')

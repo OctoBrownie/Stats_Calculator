@@ -1,42 +1,15 @@
 import math
 
-a = [12, 29, 24, 36, 52, 38, 47, 69, 47, 33, 52, 58, 68, 48]
-a.sort()
-print(a)
-print("len of list: " + str(len(a)))
-
-# mean
-total = 0
-for item in a:
-	total = total + item
-
-total = total / len(a)
-print("mean = " + str(total))
-mean = total
-
-
-# std deviation
-total = 0
-nums_squared = [] 
-for item in a:
-	total = total + abs(item - mean)**2
-	nums_squared.append(abs(item - mean)**2)
-
-total = total / len(a)
-total = math.sqrt(total)
-print("std deviation = " + str(total))
-
-# 'inputs' should be a list of values
 def stats_calc(inputs='help', *args):
-	"""This is a basic stats calculator. Call the function with "stats_calc([input list], 'commands')". All commands must be \
-inside quotes, otherwise it won't work. 
+	"""This is a basic stats calculator. Call the function with "stats_calc([input list], 'commands')". All commands \
+must be inside quotes, otherwise it won't work. 
 
 List of commands:
 	sort - sorts the list
 	mean - finds the average of all values within the list
 	median - finds the middle value of the list
 	std deviation - finds the standard deviation of the list
-Created by Crystal Lee, in hopes of making the stats unit easier to go through."""
+Created by Crystal Lee, in hopes of making the stats unit in her math class easier to go through."""
 	if inputs == 'help':
 		print(stats_calc.__doc__)
 		return 0
@@ -84,14 +57,14 @@ Created by Crystal Lee, in hopes of making the stats unit easier to go through."
 		print("std deviation = " + str(total))
 		return total
 
-	funcs = {'sort':print_sort, 'mean':mean, 'median':median, 'std deviation':std_deviation 
+	functions = {'sort':print_sort, 'mean':mean, 'median':median, 'std deviation':std_deviation 
 			}
 	for arg in args:
 		if arg in list(funcs.keys()):
 			if arg == 'sort':
-				funcs[arg](inputs, False)
+				functions[arg](inputs, False)
 			else:
-				funcs[arg](inputs)
+				functions[arg](inputs)
 		else:
 			print("ERROR: Unknown function.")
 			return 1

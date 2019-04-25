@@ -27,7 +27,20 @@ total = math.sqrt(total)
 print("std deviation = " + str(total))
 
 # 'inputs' should be a list of values
-def stats_cheat(inputs, *args):
+def stats_calc(inputs='help', *args):
+	"""This is a basic stats calculator. Call the function with "stats_calc([input list], 'commands')". All commands must be \
+inside quotes, otherwise it won't work. 
+
+List of commands:
+	sort - sorts the list
+	mean - finds the average of all values within the list
+	median - finds the middle value of the list
+	std deviation - finds the standard deviation of the list
+Created by Crystal Lee, in hopes of making the stats unit easier to go through."""
+	if inputs == 'help':
+		print(stats_calc.__doc__)
+		return 0
+	
 	def print_sort(input_list, from_func):
 		new_list = input_list
 		new_list = sorted(new_list)
@@ -85,4 +98,4 @@ def stats_cheat(inputs, *args):
 
 if __name__ == "__main__":
 	# mainly testing stuff here
-	stats_cheat([42, 34, 6, 45], 'sort', 'mean','median')
+	stats_calc([42, 34, 6, 45], 'sort', 'mean','median')

@@ -78,7 +78,8 @@ List of commands:
 		nums_squared = [] 
 		for item in input_list:
 			total = total + abs(item - mean)**2
-			nums_squared.append(abs(item - mean)**2)
+			# nums_squared.append(abs(item - mean)**2)
+			# for the one time they ask for showing work
 
 		total = total / len(input_list)
 		total = math.sqrt(total)
@@ -104,4 +105,5 @@ List of commands:
 				functions[arg](inputs)
 		else:
 			print("ERROR: Unknown function.")
+			print("Type in 'stats_calc()' or 'stats_calc('help')' for a list of valid commands.")
 			return 1

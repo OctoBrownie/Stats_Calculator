@@ -9,6 +9,9 @@ List of commands:
 	mean - finds the average of all values within the list
 	median - finds the middle value of the list
 	mode - finds the number(s) that occur most in the data
+	range - finds the range of the set
+	variance - finds the variance of the list
+	mean deviation - finds the average deviation from the mean
 	std deviation - finds the standard deviation of the list
 """	
 	def print_sort(input_list, level):
@@ -107,6 +110,15 @@ List of commands:
 			print("std deviation = " + str(total))
 		return total
 	
+	def mean_dev(input_list, level):
+		total = 0
+		for item in input_list:
+			total = total + abs(mean(input_list, level=2) - item)
+		total = total / len(input_list)
+		if level == 1:
+			print("mean deviation = " + total)
+		return total
+	
 	if inputs == 'help':
 		print(stats_calc.__doc__)
 		return 0
@@ -121,7 +133,7 @@ List of commands:
 		return 1
 	
 	functions = {'sort':print_sort, 'mean':mean, 'median':median, 'mode':mode, 'range':my_range, 
-				 'std deviation':std_deviation, 'variance':variance}
+				 'std deviation':std_deviation, 'variance':variance, 'mean deviation':mean_dev}
 	for arg in args:
 		if arg in list(functions.keys()):
 			functions[arg](inputs, level=1)

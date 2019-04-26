@@ -79,7 +79,14 @@ List of commands:
 		if level == 1:
 			print("Mode is {0} with {1} times found.".format(mode_formatted, mode_num[-1]))
 		return mode_num		# returns modes (index 0 to index -2) and the amount of times found (index -1)
-		
+	
+	def my_range(input_list, level):
+			input_list.sort()
+			if level == 1:
+				print("Range {0}. \nLowest val = {1} \nHighest val = {2}".format(input_list[0] - input_list[-1], 
+																				 input_list[0], input_list[-1]))
+			return (input_list[0], input_list[-1], input_list[0] - input_list[-1])		# gives (low, high, range)
+	
 	def variance(input_list, level):
 		total = 0
 		# for the one time they ask for showing work
@@ -113,8 +120,8 @@ List of commands:
 		print("ERROR: Invalid input list.")
 		return 1
 	
-	functions = {'sort':print_sort, 'mean':mean, 'median':median, 'std deviation':std_deviation, 'mode':mode,
-				'variance':variance}
+	functions = {'sort':print_sort, 'mean':mean, 'median':median, 'mode':mode, 'range':my_range, 
+				 'std deviation':std_deviation, 'variance':variance}
 	for arg in args:
 		if arg in list(functions.keys()):
 			functions[arg](inputs, level=1)

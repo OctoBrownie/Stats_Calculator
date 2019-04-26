@@ -12,10 +12,10 @@ List of commands:
 	std deviation - finds the standard deviation of the list
 """	
 	def print_sort(input_list, level):
-		print("Original list:" + str(input_list))
+		print("Original list: " + str(input_list))
 		new_list = input_list
 		new_list = sorted(new_list)
-		print(new_list)
+		print("Sorted list: " + str(new_list))
 		return new_list
 
 	def mean(input_list, level):

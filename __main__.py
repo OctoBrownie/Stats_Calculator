@@ -29,7 +29,7 @@ List of commands:
 		return total
 
 	def median(input_list, level):
-		input_list.sort()
+		input_list.sort(
 		total = input_list
 		med_index = len(input_list) / 2
 		# if number of terms is odd
@@ -85,8 +85,8 @@ List of commands:
 		# for the one time they ask for showing work
 		# raw_num_variance = [] 
 		for item in input_list:
-			total = total + abs(item - mean(input_list, level=2))**2
-			# raw_num_variance.append(abs(item - mean(input_list, level=2)))
+			total = total + (item - mean(input_list, level=2))**2
+			# raw_num_variance.append(item - mean(input_list, level=2))
 		# print(raw_num_variance)
 		total = total / len(input_list)
 		if level == 1:

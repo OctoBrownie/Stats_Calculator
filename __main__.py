@@ -80,7 +80,7 @@ List of commands:
 			print("Mode is {0} with {1} times found.".format(mode_formatted, mode_num[-1]))
 		return mode_num		# returns modes (index 0 to index -2) and the amount of times found (index -1)
 		
-	def std_deviation(input_list, level):
+	def variance(input_list, level):
 		total = 0
 		# for the one time they ask for showing work
 		# raw_num_variance = [] 
@@ -89,6 +89,12 @@ List of commands:
 			# raw_num_variance.append(abs(item - mean(input_list, level=2)))
 		# print(raw_num_variance)
 		total = total / len(input_list)
+		if level == 1:
+			print("variance = " + str(total))
+		return total
+	
+	def std_deviation(input_list, level):
+		total = variance(input_list, level=1)
 		total = math.sqrt(total)
 		if level == 1:
 			print("std deviation = " + str(total))
@@ -107,7 +113,8 @@ List of commands:
 		print("ERROR: Invalid input list.")
 		return 1
 	
-	functions = {'sort':print_sort, 'mean':mean, 'median':median, 'std deviation':std_deviation, 'mode':mode}
+	functions = {'sort':print_sort, 'mean':mean, 'median':median, 'std deviation':std_deviation, 'mode':mode,
+				'variance':variance}
 	for arg in args:
 		if arg in list(functions.keys()):
 			functions[arg](inputs, level=1)

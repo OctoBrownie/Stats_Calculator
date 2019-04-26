@@ -15,8 +15,7 @@ List of commands:
 		print("Original list:" + str(input_list))
 		new_list = input_list
 		new_list = sorted(new_list)
-		if level == 1:
-			print(new_list)
+		print(new_list)
 		return new_list
 
 	def mean(input_list, level):

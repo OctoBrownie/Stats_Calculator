@@ -56,7 +56,7 @@ List of commands:
 			if item == last_num[0]:				# keep incrementing until it isn't the last num anymore
 				last_num[1] = last_num[1] + 1
 			else:								# whereupon it will check whether it is the new mode or not
-				if last_num[1] == mode_num[-1]:
+				if (last_num[1] == mode_num[-1]) and (last_num != mode_num):	# to not double count the 1st # if there's only 1
 					mode_num = mode_num[:-1] + [last_num[0]] + [mode_num[-1]]
 				elif last_num[1] > mode_num[-1]:
 					mode_num = last_num

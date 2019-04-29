@@ -32,22 +32,22 @@ List of commands:
 		return total
 
 	def median(input_list, level):
-		input_list.sort(
+		input_list.sort()
 		total = input_list
 		med_index = len(input_list) / 2
 		# if number of terms is odd
 		if str(med_index).endswith(".5"):
-			med_index = med_index + 0.5				# to round up
-			total = total[int(med_index) - 1]
+			med_index = med_index - 0.5				# to round down
+			total = total[int(med_index)]
 			if level == 1:
 				print("median = " + str(total))							# indices start at 0, not 1
-			return total 
+			return total, [med_index] 						# gives the median and index of the median
 		# if number of terms is even
 		else:
 			total = (total[int(med_index) - 1] + total[int(med_index)]) / 2
 			if level == 1:
 				print("median = " + str(total))
-			return total
+			return total, [med_index - 1, med_index]		# gives the median and indices of the median
 		
 	def mode(input_list, level):
 		input_list.sort()
@@ -119,6 +119,25 @@ List of commands:
 			print("mean deviation = " + total)
 		return total
 	
+	def five_num(input_list, level):
+		# returns (low, lq median, median, hq median, high)
+		min_num, max_num, input_range = my_range(input_list, level=2)
+		median_num, median_indices = median(input_list, level=2)
+		
+		if len(median_indices) == 2:			# even number of items in list
+			median_indices = int(median_indices[1])
+			low_quart = input_list[:median_indices]
+			high_quart = input_list[median_indices:]
+		else:
+			median_indices = int(median_indices[0])
+			low_quart = input_list[:median_indices]
+			high_quart = input_list[median_indices + 1:]		# since we don't count the median as part of either quartile
+		low_quart_med = median(low_quart, level=2)[0]
+		high_quart_med = median(high_quart, level=2)[0]
+		if level == 1:
+			print("5 number summary: {0}, {2}, {4}, {3}, {1}".format(min_num, max_num, low_quart_med, high_quart_med, median_num))
+		return [min_num, low_quart_med, median_num, high_quart_med, max_num]
+	
 	if inputs == 'help':
 		print(stats_calc.__doc__)
 		return 0
@@ -133,7 +152,7 @@ List of commands:
 		return 1
 	
 	functions = {'sort':print_sort, 'mean':mean, 'median':median, 'mode':mode, 'range':my_range, 
-				 'std deviation':std_deviation, 'variance':variance, 'mean deviation':mean_dev}
+				 'std deviation':std_deviation, 'variance':variance, 'mean deviation':mean_dev, '5 num summary':five_num}
 	for arg in args:
 		if arg in list(functions.keys()):
 			functions[arg](inputs, level=1)
@@ -141,3 +160,4 @@ List of commands:
 			print("ERROR: Unknown function.")
 			print("Type in 'stats_calc()' or 'stats_calc('help')' for a list of valid commands.")
 			return 1
+	return 0

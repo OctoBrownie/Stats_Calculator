@@ -10,6 +10,7 @@ List of commands:
 	median - finds the middle value of the list
 	mode - finds the number(s) that occur most in the data
 	range - finds the range of the set
+	5 num summary - returns the five number summary (min, lower quartile median, median, upper quartile median, max)
 	variance - finds the variance of the list
 	mean deviation - finds the average deviation from the mean
 	std deviation - finds the standard deviation of the list

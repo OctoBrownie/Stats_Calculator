@@ -8,4 +8,8 @@ This is for my math class, where we were doing some statistics. Being too lazy t
 - Mean
 - Median
 - Mode
+- Range
+- Variance
 - Standard Deviation
+- Mean Deviation
+- 5 Number Summary (for box and whisker plots)

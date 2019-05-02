@@ -143,13 +143,16 @@ List of commands:
 		print(stats_calc.__doc__)
 		return 0
 	elif type(inputs) is not list:
-		print("ERROR: Inputs were not a list.")
+		print("ERROR: Inputs are not a list.")
 		return 1
 	elif inputs == []:
 		print("ERROR: Empty list.")
 		return 1
 	elif not(all(type(item) is int for item in inputs)):
 		print("ERROR: Invalid input list.")
+		return 1
+	elif len(args) == 0:
+		print("No arguments passed.")
 		return 1
 	
 	functions = {'sort':print_sort, 'mean':mean, 'median':median, 'mode':mode, 'range':my_range, 
@@ -158,7 +161,7 @@ List of commands:
 		if arg in list(functions.keys()):
 			functions[arg](inputs, level=1)
 		else:
-			print("ERROR: Unknown function.")
+			print("ERROR: {} is an unknown function.".format(arg))
 			print("Type in 'stats_calc()' or 'stats_calc('help')' for a list of valid commands.")
 			return 1
 	return 0

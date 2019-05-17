@@ -98,14 +98,14 @@ List of commands:
 		for item in input_list:
 			total = total + (item - mean(input_list, level=2))**2
 			# raw_num_variance.append(item - mean(input_list, level=2))
-		# print(raw_num_variance)
 		total = total / len(input_list)
 		if level == 1:
 			print("variance = " + str(total))
+			# print(raw_num_variance)
 		return total
 	
 	def std_deviation(input_list, level):
-		total = variance(input_list, level=1)
+		total = variance(input_list, level=2)
 		total = math.sqrt(total)
 		if level == 1:
 			print("std deviation = " + str(total))

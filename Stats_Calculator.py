@@ -165,3 +165,8 @@ List of commands:
 			print("Type in 'stats_calc()' or 'stats_calc('help')' for a list of valid commands.")
 			return 1
 	return 0
+
+
+# outlier < quartile 1 - 1.5*iqr 
+# outlier > quartile 3 + 1.5*iqr
+# iqr == interquartile range 

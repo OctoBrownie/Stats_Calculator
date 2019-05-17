@@ -87,7 +87,7 @@ List of commands:
 	def my_range(input_list, level):
 			input_list.sort()
 			if level == 1:
-				print("Range {0}. \nLowest val = {1} \nHighest val = {2}".format(input_list[0] - input_list[-1], 
+				print("Range {0}. \nLowest val = {1} \nHighest val = {2}".format(input_list[-1] - input_list[0], 
 																				 input_list[0], input_list[-1]))
 			return (input_list[0], input_list[-1], input_list[-1] - input_list[0])		# gives (low, high, range)
 	

@@ -63,7 +63,6 @@ List of commands:
 				if index - start_index > num_times:
 				    mode_num = [input_list[index - 1]]
 				    num_times = index - start_index
-				    print(str(index) + " " + str(start_index))
 				elif index - start_index == num_times:
 				    mode_num.append(input_list[index - 1])
 				curr_num = num 

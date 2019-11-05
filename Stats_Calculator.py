@@ -60,7 +60,6 @@ List of commands:
 		
 		for index, num in enumerate(input_list):
 			if num != curr_num:
-				print(num)
 				if index - start_index > num_times:
 				    mode_num = [input_list[index - 1]]
 				    num_times = index - start_index

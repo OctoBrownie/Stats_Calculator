@@ -52,37 +52,41 @@ List of commands:
 		
 	def mode(input_list, level):
 		input_list.sort()
-		mode_num = [input_list[0], 1]		# index -1 == # of times, all others == nums 
-		last_num = [input_list[0], 1]		# the last num used
 		
-		for item in input_list[1:]:
-			if item == last_num[0]:				# keep incrementing until it isn't the last num anymore
-				last_num[1] = last_num[1] + 1
-			else:								# whereupon it will check whether it is the new mode or not
-				if (last_num[1] == mode_num[-1]) and (last_num != mode_num):	# to not double count the 1st # if there's only 1
-					mode_num = mode_num[:-1] + [last_num[0]] + [mode_num[-1]]
-				elif last_num[1] > mode_num[-1]:
-					mode_num = last_num
-				last_num = [item, 1]
-				
-		if last_num[1] == mode_num[-1]:				# to include the last numbers in the mode count
-			mode_num = mode_num[:-1] + [last_num[0]] + [mode_num[-1]]
-		elif last_num[1] > mode_num[-1]:
-			mode_num = last_num
+		mode_num = []		# index -1 == # of times, all others == nums 
+		num_times = 0
+		start_index = 0
+		curr_num = input_list[0]
+		
+		for index, num in enumerate(input_list):
+			if num != curr_num:
+				print(num)
+				if index - start_index > num_times:
+				    mode_num = [input_list[index - 1]]
+				    num_times = index - start_index
+				    print(str(index) + " " + str(start_index))
+				elif index - start_index == num_times:
+				    mode_num.append(input_list[index - 1])
+				curr_num = num 
+				start_index = index
+		if len(input_list) - start_index > num_times:
+		    mode_num = [curr_num]
+		    num_times = len(input_list) - start_index
+		elif len(input_list) - start_index == num_times:
+		    mode_num.append(curr_num)
 
 		# so we don't say everything is the mode
-		if (len(mode_num[:-1])*mode_num[-1]) == len(input_list):			# mode(s) * # of times shows up == amt of #s counted
+		if num_times == len(input_list):
 			mode_formatted = "N/A"
-			del mode_num[0:-1]
-			mode_num = ["N/A"] + mode_num
+			mode_num = ["N/A"]
 		else:
 			mode_formatted = "{}".format(mode_num[0])
-			for item in mode_num[1:-1]:
+			for item in mode_num[1:]:
 				mode_formatted = mode_formatted + ", {}".format(item)
 		
 		if level == 1:
-			print("Mode is {0} with {1} times found.".format(mode_formatted, mode_num[-1]))
-		return mode_num		# returns modes (index 0 to index -2) and the amount of times found (index -1)
+			print("Mode is {0} with {1} times found.".format(mode_formatted, num_times))
+		return mode_num
 	
 	def my_range(input_list, level):
 			input_list.sort()
@@ -165,7 +169,6 @@ List of commands:
 			print("Type in 'stats_calc()' or 'stats_calc('help')' for a list of valid commands.")
 			return 1
 	return 0
-
 
 # outlier < quartile 1 - 1.5*iqr 
 # outlier > quartile 3 + 1.5*iqr
